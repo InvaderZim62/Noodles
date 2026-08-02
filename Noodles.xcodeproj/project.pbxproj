@@ -6,30 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4A516A97302010220041CED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A516A8E302010220041CED0 /* Assets.xcassets */; };
+		4A516A98302010220041CED0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A516A8F302010220041CED0 /* LaunchScreen.storyboard */; };
+		4A516A9A302010220041CED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A516A94302010220041CED0 /* Main.storyboard */; };
+		4A516A9B302010220041CED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A8D302010220041CED0 /* AppDelegate.swift */; };
+		4A516A9C302010220041CED0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A90302010220041CED0 /* SceneDelegate.swift */; };
+		4A516A9D302010220041CED0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A95302010220041CED0 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4A516A75302010040041CED0 /* Noodles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noodles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A516A8D302010220041CED0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4A516A8E302010220041CED0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A516A8F302010220041CED0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A516A90302010220041CED0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4A516A92302010220041CED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A516A93302010220041CED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A516A95302010220041CED0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4A516A87302010060041CED0 /* Exceptions for "Noodles" folder in "Noodles" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 4A516A74302010040041CED0 /* Noodles */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		4A516A77302010040041CED0 /* Noodles */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4A516A87302010060041CED0 /* Exceptions for "Noodles" folder in "Noodles" target */,
-			);
-			path = Noodles;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4A516A72302010040041CED0 /* Frameworks */ = {
@@ -45,7 +40,7 @@
 		4A516A6C302010040041CED0 = {
 			isa = PBXGroup;
 			children = (
-				4A516A77302010040041CED0 /* Noodles */,
+				4A516A96302010220041CED0 /* Noodles */,
 				4A516A76302010040041CED0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +51,28 @@
 				4A516A75302010040041CED0 /* Noodles.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4A516A91302010220041CED0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A516A8D302010220041CED0 /* AppDelegate.swift */,
+				4A516A8E302010220041CED0 /* Assets.xcassets */,
+				4A516A8F302010220041CED0 /* LaunchScreen.storyboard */,
+				4A516A90302010220041CED0 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A516A96302010220041CED0 /* Noodles */ = {
+			isa = PBXGroup;
+			children = (
+				4A516A94302010220041CED0 /* Main.storyboard */,
+				4A516A95302010220041CED0 /* ViewController.swift */,
+				4A516A91302010220041CED0 /* Supporting Files */,
+				4A516A92302010220041CED0 /* Info.plist */,
+			);
+			path = Noodles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +89,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				4A516A77302010040041CED0 /* Noodles */,
 			);
 			name = Noodles;
 			packageProductDependencies = (
@@ -122,6 +136,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A516A97302010220041CED0 /* Assets.xcassets in Resources */,
+				4A516A98302010220041CED0 /* LaunchScreen.storyboard in Resources */,
+				4A516A9A302010220041CED0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +149,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A516A9B302010220041CED0 /* AppDelegate.swift in Sources */,
+				4A516A9C302010220041CED0 /* SceneDelegate.swift in Sources */,
+				4A516A9D302010220041CED0 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4A516A94302010220041CED0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A516A93302010220041CED0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4A516A89302010060041CED0 /* Debug */ = {
@@ -153,6 +184,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -185,6 +217,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
