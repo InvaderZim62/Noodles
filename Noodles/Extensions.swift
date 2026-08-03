@@ -39,23 +39,6 @@ extension CGPoint {
     }
 }
 
-extension UIBezierPath {
-    func image(size: CGSize, color: UIColor, lineWidth: CGFloat) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            color.setStroke()
-            self.lineWidth = lineWidth
-            stroke()
-        }
-    }
-    
-    func image(size: CGSize, color: UIColor) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            color.setFill()
-            fill()
-        }
-    }
-}
-
 extension UIView {
     // convert view to UIImage (same size)
     var snapshot: UIImage? {
@@ -64,23 +47,6 @@ extension UIView {
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
         }
-    }
-}
-
-// from: https://stackoverflow.com/a/75513549/2526464
-extension Array where Element: NSAttributedString {
-    func joined(separator: NSAttributedString) -> NSAttributedString {
-        guard let firstElement = first else { return NSAttributedString() }
-        
-        return dropFirst()
-            .reduce(into: NSMutableAttributedString(attributedString: firstElement)) { collector, element in
-                collector.append(separator)
-                collector.append(element)
-            }
-    }
-    
-    func joined(separator: String = "") -> NSAttributedString {
-        joined(separator: NSAttributedString(string: separator))
     }
 }
 

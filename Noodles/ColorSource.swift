@@ -1,5 +1,5 @@
 //
-//  Ant.swift
+//  ColorSource.swift
 //  Ants
 //
 //  Created by Phil Stern on 7/31/26.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-struct Ant: Codable {
+struct ColorSource: Codable {
     var position = CGPoint(x: 0, y: 0)
     var heading = 0.0  // 0 radians to right, positive clockwise
     @CodableColor var color: UIColor
     
     mutating func moveRandomly() {
         heading = gaussianRandom(mean: heading, standardDeviation: 0.2)  // ~5 deg 1-sigma
-        let deltaPosition = CGPoint(x: Constant.antStepSize * cos(heading), y: Constant.antStepSize * sin(heading))
+        let deltaPosition = CGPoint(x: Constant.stepSize * cos(heading), y: Constant.stepSize * sin(heading))
         position += deltaPosition
     }
     

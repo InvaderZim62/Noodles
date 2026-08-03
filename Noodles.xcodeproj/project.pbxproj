@@ -13,11 +13,9 @@
 		4A516A9B302010220041CED0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A8D302010220041CED0 /* AppDelegate.swift */; };
 		4A516A9C302010220041CED0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A90302010220041CED0 /* SceneDelegate.swift */; };
 		4A516A9D302010220041CED0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A95302010220041CED0 /* ViewController.swift */; };
-		4A516A9F302010BA0041CED0 /* TrailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A9E302010BA0041CED0 /* TrailView.swift */; };
+		4A516A9F302010BA0041CED0 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516A9E302010BA0041CED0 /* CanvasView.swift */; };
 		4A516AA1302011200041CED0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AA0302011200041CED0 /* Extensions.swift */; };
-		4A516AA330203C730041CED0 /* Anthill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AA230203C730041CED0 /* Anthill.swift */; };
-		4A516AA530203C800041CED0 /* Ant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AA430203C800041CED0 /* Ant.swift */; };
-		4A516AA730203C860041CED0 /* AntView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AA630203C860041CED0 /* AntView.swift */; };
+		4A516AA530203C800041CED0 /* ColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AA430203C800041CED0 /* ColorSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +27,9 @@
 		4A516A92302010220041CED0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A516A93302010220041CED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A516A95302010220041CED0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4A516A9E302010BA0041CED0 /* TrailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailView.swift; sourceTree = "<group>"; };
+		4A516A9E302010BA0041CED0 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		4A516AA0302011200041CED0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		4A516AA230203C730041CED0 /* Anthill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anthill.swift; sourceTree = "<group>"; };
-		4A516AA430203C800041CED0 /* Ant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ant.swift; sourceTree = "<group>"; };
-		4A516AA630203C860041CED0 /* AntView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntView.swift; sourceTree = "<group>"; };
+		4A516AA430203C800041CED0 /* ColorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +75,8 @@
 			children = (
 				4A516A94302010220041CED0 /* Main.storyboard */,
 				4A516A95302010220041CED0 /* ViewController.swift */,
-				4A516AA230203C730041CED0 /* Anthill.swift */,
-				4A516AA430203C800041CED0 /* Ant.swift */,
-				4A516AA630203C860041CED0 /* AntView.swift */,
-				4A516A9E302010BA0041CED0 /* TrailView.swift */,
+				4A516AA430203C800041CED0 /* ColorSource.swift */,
+				4A516A9E302010BA0041CED0 /* CanvasView.swift */,
 				4A516AA0302011200041CED0 /* Extensions.swift */,
 				4A516A91302010220041CED0 /* Supporting Files */,
 				4A516A92302010220041CED0 /* Info.plist */,
@@ -166,12 +160,10 @@
 			files = (
 				4A516AA1302011200041CED0 /* Extensions.swift in Sources */,
 				4A516A9B302010220041CED0 /* AppDelegate.swift in Sources */,
-				4A516AA330203C730041CED0 /* Anthill.swift in Sources */,
-				4A516AA530203C800041CED0 /* Ant.swift in Sources */,
+				4A516AA530203C800041CED0 /* ColorSource.swift in Sources */,
 				4A516A9C302010220041CED0 /* SceneDelegate.swift in Sources */,
 				4A516A9D302010220041CED0 /* ViewController.swift in Sources */,
-				4A516AA730203C860041CED0 /* AntView.swift in Sources */,
-				4A516A9F302010BA0041CED0 /* TrailView.swift in Sources */,
+				4A516A9F302010BA0041CED0 /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
