@@ -28,7 +28,8 @@ class ViewController: UIViewController {
 
         // create color sources
         for i in 0..<Constant.numberOfColorSources {
-            let color = UIColor(hue: Double(i)/11, saturation: 1, brightness: 1, alpha: 1)
+            let hue = Double(i)/Double(Constant.numberOfColorSources)
+            let color = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
             let colorSource = ColorSource(color: color)
             colorSources.append(colorSource)
         }
