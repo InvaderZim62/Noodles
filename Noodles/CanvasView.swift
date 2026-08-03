@@ -6,14 +6,8 @@
 //
 //  In order to maintain performance with potentially thousands of bezier paths (spots) being drawn,
 //  CanvasView uses an image view (canvasImageView) to capture the screen after a certain number of
-//  spots are added, and clears out the spots.  CanvasImageView is created programmatically and placed
-//  behind CanvasView when CanvasView is added by its superview (see func didMoveToWindow).
-//
-//  Note: I'm overriding bounds to determine when orientation changes, so I can reset canvasImageView's
-//  frame.  When orientation changes, CanvasView's bounds change (frame becomes some intermediate value),
-//  then super.viewDidLayoutSubviews is called, then CanvasView's frame is correct.  I tried overriding
-//  CanvasView's frame to update canvasImageView's frame, but didSet only gets called at startup, and not
-//  each time frame changes (it worked when CanvasView was added programmatically, vs in storyboard).
+//  spots are added, and clears out the spots.  CanvasImageView is placed behind CanvasView in the
+//  storyboard.
 //
 
 import UIKit
@@ -24,26 +18,15 @@ struct CanvasConst {
 
 class CanvasView: UIView {
     private var spots = [Spot]() { didSet { setNeedsDisplay() } }  // spots since last converted to image
-    private var canvasImageView = UIImageView()
     
+    @IBOutlet var canvasImageView: UIImageView!
+        
     override var bounds: CGRect {
         didSet {
-            spots.removeAll()  // clear all if device orientation changes
-            canvasImageView.image = nil
-            canvasImageView.frame = bounds  // assumes CanvasView origin is at (0, 0)
-        }
-    }
-    
-    // didMoveToWindow called automatically when CanvasView is added/removed from superview;
-    // window property is nil if CanvasView was removed
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
-        if window == nil {
-            // CanvasView removed - remove canvasImageView
-            canvasImageView.removeFromSuperview()
-        } else {
-            // CanvasView added - add canvasImageView
-            superview?.insertSubview(canvasImageView, belowSubview: self)  // insert canvasImageView below this CanvasView
+            if bounds != oldValue {
+                spots.removeAll()  // clear all if device orientation changes
+                canvasImageView.image = nil
+            }
         }
     }
     

@@ -61,9 +61,9 @@ class ViewController: UIViewController {
     @objc private func updateSimulation() {
         for index in colorSources.indices {
             colorSources[index].moveRandomly()
-            // limit position to screen (allow past edges)
+            // limit position to canvasView (slightly past edges)
             colorSources[index].position = colorSources[index].position
-                .limitedToRect(view.frame, withHorizontalInset: -Constant.spotSize, andVerticalInset: -Constant.spotSize)
+                .limitedToRect(canvasView.bounds, withHorizontalInset: -Constant.spotSize, andVerticalInset: -Constant.spotSize)
             canvasView.addSpot(Spot(colorSource: colorSources[index]))
         }
     }

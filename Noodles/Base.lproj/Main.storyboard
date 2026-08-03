@@ -15,9 +15,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-u5-PYp">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVs-IV-YlK" customClass="CanvasView" customModule="Noodles" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="canvasImageView" destination="j4E-u5-PYp" id="0fg-gG-XrU"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -27,6 +33,10 @@
                             <constraint firstAttribute="bottom" secondItem="aVs-IV-YlK" secondAttribute="bottom" id="NVc-F3-VNg"/>
                             <constraint firstItem="aVs-IV-YlK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TK6-86-0EN"/>
                             <constraint firstItem="aVs-IV-YlK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="baQ-4F-Jaj"/>
+                            <constraint firstItem="j4E-u5-PYp" firstAttribute="trailing" secondItem="aVs-IV-YlK" secondAttribute="trailing" id="dNu-Lm-Win"/>
+                            <constraint firstItem="j4E-u5-PYp" firstAttribute="bottom" secondItem="aVs-IV-YlK" secondAttribute="bottom" id="gXV-O8-rC9"/>
+                            <constraint firstItem="j4E-u5-PYp" firstAttribute="top" secondItem="aVs-IV-YlK" secondAttribute="top" id="iwM-Zk-0no"/>
+                            <constraint firstItem="j4E-u5-PYp" firstAttribute="leading" secondItem="aVs-IV-YlK" secondAttribute="leading" id="mmL-eH-80F"/>
                         </constraints>
                     </view>
                     <connections>
