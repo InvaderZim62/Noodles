@@ -14,7 +14,7 @@ struct Constant {
 
 class ViewController: UIViewController {
     var anthill = Anthill()
-    var trailViews = [TrailView]()
+    var trailView = TrailView()
     var antViews = [AntView]()
     var pastBounds = CGRect()
     var simulationTimer = Timer()
@@ -23,16 +23,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // add ants to model (eventually, emanate from hole)
+        view.addSubview(trailView)
+
+        // add ants to model
         for i in 0..<10 {
             let color = UIColor(hue: Double(i)/11, saturation: 1, brightness: 1, alpha: 1)
             let ant = Ant(color: color)
             anthill.ants.append(ant)
             
             let trailView = TrailView()
-            trailView.color = color
-            trailViews.append(trailView)
             view.addSubview(trailView)
         }
         startSimulation()
@@ -41,8 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if view.bounds != pastBounds {
-            anthill.holePosition = randomPositionInSafeArea()
-            trailViews.forEach { $0.frame = view.frame }
+            trailView.frame = view.frame
             
             for index in anthill.ants.indices {
                 anthill.ants[index].position = randomPositionInSafeArea()
@@ -76,9 +74,8 @@ class ViewController: UIViewController {
     @objc private func updateSimulation() {
         for index in anthill.ants.indices {
             anthill.ants[index].moveRandomly()
-            //            anthill.ants[index].position = anthill.ants[index].position.limitedToRect(view.safeAreaLayoutGuide.layoutFrame)
             anthill.ants[index].position = anthill.ants[index].position.limitedToRect(view.frame)
-            trailViews[index].addPoint(anthill.ants[index].position)
+            trailView.addSpot(Spot(ant: anthill.ants[index]))
         }
         updateViewFromModel()
     }

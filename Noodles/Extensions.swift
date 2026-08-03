@@ -56,6 +56,17 @@ extension UIBezierPath {
     }
 }
 
+extension UIView {
+    // convert view to UIImage (same size)
+    var snapshot: UIImage? {
+        // from: https://stackoverflow.com/a/41288197/2526464
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 // from: https://stackoverflow.com/a/75513549/2526464
 extension Array where Element: NSAttributedString {
     func joined(separator: NSAttributedString) -> NSAttributedString {

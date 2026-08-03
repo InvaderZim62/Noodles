@@ -13,11 +13,19 @@ struct TrailConst {
     static let maxPoints = 400  // max points before capturing image of trail and clearing points
 }
 
-class TrailView: UIView {
-    var color = UIColor.white
-    var allPoints = [CGPoint]()
+struct Spot: Codable {
+    var position: CGPoint
+    @CodableColor var color: UIColor
     
-    private var points = [CGPoint]() { didSet { setNeedsDisplay() } }  // points of trail, since last converted to image
+    init(ant: Ant) {
+        position = ant.position
+        color = ant.color
+    }
+}
+
+class TrailView: UIView {
+    var spots = [Spot]() { didSet { setNeedsDisplay() } }  // spots of trail, since last converted to image
+    
     private var trailImageView = UIImageView()
     
     override var frame: CGRect {
@@ -40,9 +48,8 @@ class TrailView: UIView {
         }
     }
     
-    func addPoint(_ point: CGPoint) {
-        points.append(point)
-        allPoints.append(point)
+    func addSpot(_ spot: Spot) {
+        spots.append(spot)
     }
     
     override func draw(_ rect: CGRect) {
@@ -51,32 +58,32 @@ class TrailView: UIView {
     }
     
     private func drawTrail() {
-        guard !points.isEmpty else { return }
+        guard !spots.isEmpty else { return }
         
         var trail = UIBezierPath()
-        trail = trailFrom(points)
-        color.withAlphaComponent(TrailConst.alphaComponent).setFill()
-        trail.fill()
+        trail = trailFrom(spots)
         
-        // if trail has too many points, replace it with an image, and continue with new points
-        if points.count > TrailConst.maxPoints {
-            points.removeAll()
+        // if trail has too many spots, replace it with an image, and continue with new spots
+        if spots.count > TrailConst.maxPoints {
+            spots.removeAll()
             captureTrail(trail)
         }
     }
     
-    private func trailFrom(_ points: [CGPoint]) -> UIBezierPath {
+    private func trailFrom(_ spots: [Spot]) -> UIBezierPath {
         let trail = UIBezierPath()
-        for point in points {
-            let spot = UIBezierPath(arcCenter: point, radius: TrailConst.spotSize, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-            trail.append(spot)
+        for spot in spots {
+            let spotPath = UIBezierPath(arcCenter: spot.position, radius: TrailConst.spotSize, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            spot.color.withAlphaComponent(TrailConst.alphaComponent).setFill()
+            spotPath.fill()
+            trail.append(spotPath)
         }
         return trail
     }
     
-    // convert current trail (Bezier path) to an image, and merge it with the trailImageView's image
+    // convert current view to an image, and merge it with the trailImageView's image
     private func captureTrail(_ trail: UIBezierPath) {
-        let trailImage = trail.image(size: bounds.size, color: color.withAlphaComponent(TrailConst.alphaComponent))
+        guard let trailImage = self.snapshot else { return }
         if let existingImage = trailImageView.image {
             trailImageView.image = existingImage.mergeWith(topImage: trailImage)
         } else {

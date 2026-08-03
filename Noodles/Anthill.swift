@@ -9,5 +9,4 @@ import Foundation
 
 struct Anthill: Codable {
     var ants = [Ant]()
-    var holePosition = CGPoint(x: 0, y: 0)
 }
