@@ -13,7 +13,7 @@
 import UIKit
 
 struct CanvasConst {
-    static let maxSpots = 400  // max points before capturing image of canvas and clearing points
+    static let maxSpots = 1000  // max points before capturing image of canvas and clearing points
 }
 
 class CanvasView: UIView {
@@ -58,6 +58,7 @@ class CanvasView: UIView {
     // convert canvas view to an image, and merge it with the canvasImageView's image
     private func captureCanvas() {
         guard let canvasImage = self.snapshot else { return }
+        print(".", terminator: "")
         if let existingImage = canvasImageView.image {
             canvasImageView.image = existingImage.mergeWith(topImage: canvasImage)
         } else {
