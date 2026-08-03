@@ -11,16 +11,6 @@ struct CanvasConst {
     static let maxSpots = 400  // max points before capturing image of canvas and clearing points
 }
 
-struct Spot: Codable {
-    var position: CGPoint
-    @CodableColor var color: UIColor
-    
-    init(colorSource: ColorSource) {
-        position = colorSource.position
-        color = colorSource.color
-    }
-}
-
 class CanvasView: UIView {
     private var spots = [Spot]() { didSet { setNeedsDisplay() } }  // spots since last converted to image
     private var canvasImageView = UIImageView()
