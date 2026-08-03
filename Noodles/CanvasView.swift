@@ -55,14 +55,14 @@ class CanvasView: UIView {
         }
     }
     
-    // convert canvas view to an image, and merge it with the canvasImageView's image
+    // convert canvas view to an image, and merge it with existing image
     private func captureCanvas() {
         guard let canvasImage = self.snapshot else { return }
         print(".", terminator: "")
         if let existingImage = canvasImageView.image {
             canvasImageView.image = existingImage.mergeWith(topImage: canvasImage)
         } else {
-            canvasImageView.image = canvasImage
+            canvasImageView.image = canvasImage  // initial image
         }
     }
 }

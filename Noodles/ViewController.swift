@@ -33,6 +33,9 @@ class ViewController: UIViewController {
             let colorSource = ColorSource(color: color)
             colorSources.append(colorSource)
         }
+        // add a white color source
+        colorSources.append(ColorSource(color: .white))
+        
         startSimulation()
     }
     
