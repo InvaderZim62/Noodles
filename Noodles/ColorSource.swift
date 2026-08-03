@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct ColorSource: Codable {
+struct ColorSource {
     var position = CGPoint(x: 0, y: 0)
     var heading = 0.0  // 0 radians to right, positive clockwise
-    @CodableColor var color: UIColor
+    var color: UIColor
     
     mutating func moveRandomly() {
         heading = gaussianRandom(mean: heading, standardDeviation: 0.2)  // ~5 deg 1-sigma

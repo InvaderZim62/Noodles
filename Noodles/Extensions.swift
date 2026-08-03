@@ -20,18 +20,6 @@ extension CGPoint {
         lhs = lhs + rhs
     }
     
-    func limitedToRect(_ rect: CGRect) -> CGPoint {
-        let limitedX = min(rect.maxX, max(rect.minX, x))
-        let limitedY = min(rect.maxY, max(rect.minY, y))
-        return CGPoint(x: limitedX, y: limitedY)
-    }
-    
-    func limitedToView(_ view: UIView, withHorizontalInset horizontalInset: CGFloat, andVerticalInset verticalInset: CGFloat) -> CGPoint {
-        let limitedX = min(view.bounds.maxX - horizontalInset, max(view.bounds.minX + horizontalInset, x))
-        let limitedY = min(view.bounds.maxY - verticalInset, max(view.bounds.minY + verticalInset, y))
-        return CGPoint(x: limitedX, y: limitedY)
-    }
-    
     func limitedToRect(_ rect: CGRect, withHorizontalInset horizontalInset: CGFloat, andVerticalInset verticalInset: CGFloat) -> CGPoint {
         let limitedX = min(rect.maxX - horizontalInset, max(rect.minX + horizontalInset, x))
         let limitedY = min(rect.maxY - verticalInset, max(rect.minY + verticalInset, y))
@@ -40,9 +28,9 @@ extension CGPoint {
 }
 
 extension UIView {
-    // convert view to UIImage (same size)
+    // convert view to UIImage of same size
+    // from: https://stackoverflow.com/a/41288197/2526464
     var snapshot: UIImage? {
-        // from: https://stackoverflow.com/a/41288197/2526464
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
@@ -62,38 +50,5 @@ extension UIImage {
         let mergedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return mergedImage
-    }
-}
-
-// propertyWrapper and extension to allow a struct with a UIColor var to be Codable
-// from: https://stackoverflow.com/a/50934846/2526464
-// Usage:
-//   struct MyStruct: Codable {
-//      @CodableColor var color: UIColor
-//      ...
-//   }
-
-@propertyWrapper
-struct CodableColor {
-    var wrappedValue: UIColor
-}
-
-extension CodableColor: Codable {
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        let data = try container.decode(Data.self)
-        guard let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data) else {
-            throw DecodingError.dataCorruptedError(
-                in: container,
-                debugDescription: "Invalid color"
-            )
-        }
-        wrappedValue = color
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        let data = try NSKeyedArchiver.archivedData(withRootObject: wrappedValue, requiringSecureCoding: true)
-        try container.encode(data)
     }
 }

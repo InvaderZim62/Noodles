@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct Spot: Codable {
+struct Spot {
     var position: CGPoint
-    @CodableColor var color: UIColor
+    var color: UIColor
     
     init(colorSource: ColorSource) {
         position = colorSource.position
