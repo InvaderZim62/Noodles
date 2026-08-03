@@ -4,6 +4,17 @@
 //
 //  Created by Phil Stern on 8/2/26.
 //
+//  In order to maintain performance with potentially thousands of bezier paths (spots) being drawn,
+//  CanvasView uses an image view (canvasImageView) to capture the screen after a certain number of
+//  spots are added, and clears out the spots.  CanvasImageView is created programmatically and placed
+//  behind CanvasView when CanvasView is added by its superview (see func didMoveToWindow).
+//
+//  Note: I'm overriding bounds to determine when orientation changes, so I can reset canvasImageView's
+//  frame.  When orientation changes, CanvasView's bounds change (frame becomes some intermediate value),
+//  then super.viewDidLayoutSubviews is called, then CanvasView's frame is correct.  I tried overriding
+//  CanvasView's frame to update canvasImageView's frame, but didSet only gets called at startup, and not
+//  each time frame changes (it worked when CanvasView was added programmatically, vs in storyboard).
+//
 
 import UIKit
 
@@ -15,10 +26,11 @@ class CanvasView: UIView {
     private var spots = [Spot]() { didSet { setNeedsDisplay() } }  // spots since last converted to image
     private var canvasImageView = UIImageView()
     
-    override var frame: CGRect {
+    override var bounds: CGRect {
         didSet {
-            canvasImageView.image = nil  // clear canvas if device orientation changes
-            canvasImageView.frame = frame
+            spots.removeAll()  // clear all if device orientation changes
+            canvasImageView.image = nil
+            canvasImageView.frame = bounds  // assumes CanvasView origin is at (0, 0)
         }
     }
     

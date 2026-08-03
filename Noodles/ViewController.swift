@@ -15,16 +15,16 @@ struct Constant {
 }
 
 class ViewController: UIViewController {
-    var canvasView = CanvasView()
     var colorSources = [ColorSource]()
     var pastBounds = CGRect()
     var simulationTimer = Timer()
+    
+    @IBOutlet weak var canvasView: CanvasView!
     
     // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(canvasView)
 
         // create color sources
         for i in 0..<Constant.numberOfColorSources {
@@ -38,9 +38,8 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         if view.bounds != pastBounds {
-            canvasView.frame = view.frame
-            
             // randomly place color sources on screen
             for index in colorSources.indices {
                 colorSources[index].position = randomPositionInSafeArea()

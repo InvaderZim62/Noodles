@@ -14,13 +14,28 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVs-IV-YlK" customClass="CanvasView" customModule="Noodles" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aVs-IV-YlK" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="4qi-wp-b1H"/>
+                            <constraint firstAttribute="bottom" secondItem="aVs-IV-YlK" secondAttribute="bottom" id="NVc-F3-VNg"/>
+                            <constraint firstItem="aVs-IV-YlK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TK6-86-0EN"/>
+                            <constraint firstItem="aVs-IV-YlK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="baQ-4F-Jaj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="aVs-IV-YlK" id="Svt-qf-W7f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5" y="137"/>
+            <point key="canvasLocation" x="4.615384615384615" y="136.49289099526067"/>
         </scene>
     </scenes>
 </document>
