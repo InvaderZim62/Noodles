@@ -17,6 +17,8 @@ struct CanvasConst {
 }
 
 class CanvasView: UIView {
+    var spotSize = 5.0
+
     private var spots = [Spot]() { didSet { setNeedsDisplay() } }  // spots since last converted to image
     
     @IBOutlet var canvasImageView: UIImageView!
@@ -43,7 +45,7 @@ class CanvasView: UIView {
         guard !spots.isEmpty else { return }
         
         for spot in spots {
-            let bezierSpot = UIBezierPath(arcCenter: spot.position, radius: Constant.spotSize, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            let bezierSpot = UIBezierPath(arcCenter: spot.position, radius: spotSize, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
             spot.color.setFill()
             bezierSpot.fill()
         }

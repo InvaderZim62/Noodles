@@ -13,7 +13,7 @@ struct ColorSource {
     var color: UIColor
     
     mutating func moveRandomly() {
-        heading = gaussianRandom(mean: heading, standardDeviation: 0.2)  // ~5 deg 1-sigma
+        heading = gaussianRandom(mean: heading, standardDeviation: Constant.headingDeviation)
         let deltaPosition = CGPoint(x: Constant.stepSize * cos(heading), y: Constant.stepSize * sin(heading))
         position += deltaPosition
     }

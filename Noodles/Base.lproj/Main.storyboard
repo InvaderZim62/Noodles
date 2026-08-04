@@ -41,11 +41,75 @@
                     </view>
                     <connections>
                         <outlet property="canvasView" destination="aVs-IV-YlK" id="Svt-qf-W7f"/>
+                        <segue destination="lZP-IZ-Voq" kind="show" identifier="Show Settings" id="Ye4-cr-n7i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4.615384615384615" y="136.49289099526067"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="b92-Aw-EgC">
+            <objects>
+                <viewController id="lZP-IZ-Voq" customClass="SettingsViewController" customModule="Noodles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yvg-Xj-P5f">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="797"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8t0-Yb-v8M">
+                                <rect key="frame" x="44.333333333333343" y="381.66666666666669" width="301.33333333333326" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thickness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mu2-EE-nvG">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="34"/>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="5M6-ld-tt9">
+                                        <rect key="frame" x="101.99999999999999" y="0.0" width="172.66666666666663" height="34"/>
+                                        <connections>
+                                            <action selector="spotSizeSelected:" destination="lZP-IZ-Voq" eventType="valueChanged" id="HgA-mB-vSz"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCB-MI-pKI">
+                                        <rect key="frame" x="290.66666666666669" y="0.0" width="10.666666666666686" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="301.33333333333326" id="LbP-Cs-I7H"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-OA-7F9">
+                                <rect key="frame" x="172.66666666666666" y="676" width="45" height="41"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneSelected:" destination="lZP-IZ-Voq" eventType="touchUpInside" id="x4x-vW-sVR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="D6p-T6-HYL"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yaX-OA-7F9" firstAttribute="centerX" secondItem="yvg-Xj-P5f" secondAttribute="centerX" id="5NM-3n-HaJ"/>
+                            <constraint firstItem="D6p-T6-HYL" firstAttribute="bottom" secondItem="yaX-OA-7F9" secondAttribute="bottom" constant="80" id="Ahl-3P-zuw"/>
+                            <constraint firstItem="8t0-Yb-v8M" firstAttribute="centerX" secondItem="yvg-Xj-P5f" secondAttribute="centerX" id="Zbv-Cf-y0p"/>
+                            <constraint firstItem="8t0-Yb-v8M" firstAttribute="centerY" secondItem="yvg-Xj-P5f" secondAttribute="centerY" id="sF7-4f-1Ke"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bqN-aE-Z2O"/>
+                    <connections>
+                        <outlet property="spotSizeLabel" destination="wCB-MI-pKI" id="jYg-P1-aV4"/>
+                        <outlet property="spotSizeSlider" destination="5M6-ld-tt9" id="gI6-wu-y8X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1UH-ki-lhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="135.781990521327"/>
         </scene>
     </scenes>
 </document>
