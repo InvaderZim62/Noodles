@@ -4,9 +4,16 @@
 //
 //  Created by Phil Stern on 8/2/26.
 //
+//  To make the SettingsViewController clear: (from: https://stackoverflow.com/a/33106533)
+//  - Storyboard Segue
+//    - Kind: Present Modally
+//    - Presentation: Over Current Context
+//  - Settings View Controller (in Storyboard)
+//    - Background: Clear Color
+//    - Drawing: uncheck Opaque
+//
 //  To do...
 //  - give user a choice of color pallets (settings page)
-//  - allow user to vary the heading deviation in ColorSource.moveRandomly()
 //
 
 import UIKit
