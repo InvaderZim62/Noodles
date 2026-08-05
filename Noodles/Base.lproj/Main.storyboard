@@ -159,12 +159,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVB-HI-xsg">
+                                <rect key="frame" x="172.66666666666666" y="722" width="45" height="41"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneSelected:" destination="YIf-u9-ehw" eventType="touchUpInside" id="iHO-Ut-WQW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b2e-JS-Kzg"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DVB-HI-xsg" firstAttribute="centerX" secondItem="DAd-gZ-5C8" secondAttribute="centerX" id="1dG-UX-EuY"/>
                             <constraint firstItem="CqE-gC-gdY" firstAttribute="centerX" secondItem="DAd-gZ-5C8" secondAttribute="centerX" id="5bf-Lk-WpP"/>
                             <constraint firstItem="CqE-gC-gdY" firstAttribute="top" secondItem="b2e-JS-Kzg" secondAttribute="top" constant="20" id="Bhz-2p-CwP"/>
+                            <constraint firstItem="b2e-JS-Kzg" firstAttribute="bottom" secondItem="DVB-HI-xsg" secondAttribute="bottom" constant="34" id="dEo-oK-YAf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WIn-pr-8GU"/>

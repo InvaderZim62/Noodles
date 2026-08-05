@@ -36,12 +36,12 @@ class ViewController: UIViewController {
     var simulationTimer = Timer()
     
     // settings
-    var spotSize = 5.0 {  // radius in points
+    var spotSize: Double! {  // radius in points
         didSet {
             canvasView.spotSize = spotSize
         }
     }
-    var theme = Theme.grayAndRed {
+    var theme: Theme! {
         didSet {
             setColorsBasedOnTheme()
         }
@@ -54,9 +54,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // initialize settings
         spotSize = 5
         theme = .grayAndRed
         
+        // add tap gesture to bring up setting view controller
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
 
