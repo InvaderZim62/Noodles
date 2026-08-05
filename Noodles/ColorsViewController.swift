@@ -17,7 +17,7 @@ class ColorsViewController: UIViewController {
     private var pastBounds = CGRect.zero
     
     func namePositionFor(index: Int) -> CGPoint {
-        CGPoint(x: 20, y: 100 + 80 * index)
+        CGPoint(x: 20, y: 80 + 80 * index)
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,7 +57,7 @@ class ColorsViewController: UIViewController {
     private func addThemeColorsForIndex(_ index: Int) {
         let theme = Theme.allCases[index]
         let namePosition = namePositionFor(index: index)
-        let size = (view.bounds.width - 40) / CGFloat(Constant.numberOfColorSources)
+        let size = min((view.bounds.width - 40) / CGFloat(Constant.numberOfColorSources), 40)
         for i in 0..<Constant.numberOfColorSources {
             let colorView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size)))
             colorView.frame.origin = namePosition + CGPoint(x: size * CGFloat(i), y: 40)
