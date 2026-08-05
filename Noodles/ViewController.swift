@@ -14,6 +14,10 @@
 //
 //  To do...
 //  - give user a choice of color pallets (settings page)
+//  - give user speed control
+//    - currently: 50 points/sec (range 10 -> 200?)
+//    - for smoothness: stepSize = spotSize/2
+//    - to maintain speed: simulationInterval = stepSize / speed (must restart simulation when changed)
 //
 
 import UIKit
@@ -21,23 +25,28 @@ import UIKit
 struct Constant {
     static let numberOfColorSources: Int = 20
     static let stepSize: CGFloat = 3  // distance between spots
-    static let headingDeviation: CGFloat = 0.2  // radians (~5 deg) 1-sigma
-    static let simulationInterval: TimeInterval = 0.06
+    static let headingDeviation: CGFloat = 0.2  // radians (bigger makes tighter turns)
+    static let simulationInterval: TimeInterval = 0.06  // = 50 points/sec for stepSize = 3 points
 }
 
 class ViewController: UIViewController {
-    var colorSources = [ColorSource]()
+    
+    var colorSources = Array(repeating: ColorSource(), count: Constant.numberOfColorSources)
     var pastBounds = CGRect()
     var simulationTimer = Timer()
     
     // settings
-    var spotSize = 5.0 {
+    var spotSize = 5.0 {  // radius in points
         didSet {
             canvasView.spotSize = spotSize
         }
     }
-    var theme = 0
-    
+    var theme = Theme.grayAndRed {
+        didSet {
+            setColorsBasedOnTheme()
+        }
+    }
+
     @IBOutlet weak var canvasView: CanvasView!
     
     // MARK: -
@@ -45,17 +54,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // create color sources
-        for i in 0..<Constant.numberOfColorSources {
-            let fraction = Double(i)/Double(Constant.numberOfColorSources)  // 0 to 1
-//            let color = UIColor(hue: fraction, saturation: 1, brightness: 1, alpha: 1)
-            let color = UIColor(red: fraction, green: fraction, blue: fraction, alpha: 1)
-            let colorSource = ColorSource(color: color)
-            colorSources.append(colorSource)
-        }
-        // additional colors
-//        colorSources.append(ColorSource(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-        colorSources.append(ColorSource(color: #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)))
+        spotSize = 5
+        theme = .grayAndRed
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
@@ -63,11 +63,18 @@ class ViewController: UIViewController {
         startSimulation()
     }
     
+    private func setColorsBasedOnTheme() {
+        for index in colorSources.indices {
+            colorSources[index].color = theme.color(index, of: Constant.numberOfColorSources)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         if view.bounds != pastBounds {
-            // randomly place color sources on screen
+            // orientation changed - randomly position color sources
+            // note: CanvasView clears screen when orientation changes
             for index in colorSources.indices {
                 colorSources[index].position = randomPositionInSafeArea()
                 colorSources[index].heading = Double.random(in: 0..<2 * .pi)

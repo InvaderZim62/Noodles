@@ -26,7 +26,8 @@ class CanvasView: UIView {
     override var bounds: CGRect {
         didSet {
             if bounds != oldValue {
-                spots.removeAll()  // clear all if device orientation changes
+                // orientation changed - clear screen
+                spots.removeAll()
                 canvasImageView.image = nil
             }
         }

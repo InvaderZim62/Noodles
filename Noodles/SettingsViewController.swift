@@ -14,8 +14,7 @@ class SettingsViewController: UIViewController {
             spotSizeLabel?.text = "\(Int(spotSize))"
         }
     }
-    var theme = 0
-
+    var theme = Theme.grayAndRed
     var updateSettings: (() -> Void)?  // callback
 
     @IBOutlet weak var spotSizeSlider: UISlider!
@@ -34,5 +33,20 @@ class SettingsViewController: UIViewController {
 
     @IBAction func doneSelected(_ sender: UIButton) {
         presentingViewController?.dismiss(animated: true)
+    }
+
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Colors" {
+            if let cvc = segue.destination as? ColorsViewController {
+                cvc.theme = theme
+                // provide callback for settings change
+                cvc.updateTheme = { [weak self] in
+                    self?.theme = cvc.theme
+                    self?.updateSettings?()
+                }
+            }
+        }
     }
 }

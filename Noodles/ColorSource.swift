@@ -10,7 +10,7 @@ import UIKit
 struct ColorSource {
     var position = CGPoint(x: 0, y: 0)
     var heading = 0.0  // 0 radians to right, positive clockwise
-    var color: UIColor
+    var color = UIColor.white
     
     mutating func moveRandomly() {
         heading = gaussianRandom(mean: heading, standardDeviation: Constant.headingDeviation)
