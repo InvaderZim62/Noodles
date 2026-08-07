@@ -168,21 +168,32 @@
                                     <action selector="doneSelected:" destination="YIf-u9-ehw" eventType="touchUpInside" id="iHO-Ut-WQW"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84z-UA-ffa">
+                                <rect key="frame" x="16" y="118" width="358" height="630"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b2e-JS-Kzg"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DVB-HI-xsg" firstAttribute="centerX" secondItem="DAd-gZ-5C8" secondAttribute="centerX" id="1dG-UX-EuY"/>
+                            <constraint firstItem="84z-UA-ffa" firstAttribute="leading" secondItem="b2e-JS-Kzg" secondAttribute="leading" constant="16" id="3ev-8M-W4w"/>
                             <constraint firstItem="CqE-gC-gdY" firstAttribute="centerX" secondItem="DAd-gZ-5C8" secondAttribute="centerX" id="5bf-Lk-WpP"/>
+                            <constraint firstItem="DVB-HI-xsg" firstAttribute="top" secondItem="84z-UA-ffa" secondAttribute="bottom" constant="8" symbolic="YES" id="9Gp-Ef-EBb"/>
                             <constraint firstItem="CqE-gC-gdY" firstAttribute="top" secondItem="b2e-JS-Kzg" secondAttribute="top" constant="20" id="Bhz-2p-CwP"/>
                             <constraint firstItem="b2e-JS-Kzg" firstAttribute="bottom" secondItem="DVB-HI-xsg" secondAttribute="bottom" id="dEo-oK-YAf"/>
+                            <constraint firstItem="84z-UA-ffa" firstAttribute="top" secondItem="CqE-gC-gdY" secondAttribute="bottom" constant="8" symbolic="YES" id="oWh-Yk-3n1"/>
+                            <constraint firstItem="b2e-JS-Kzg" firstAttribute="trailing" secondItem="84z-UA-ffa" secondAttribute="trailing" constant="16" id="tYh-Fb-nyH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WIn-pr-8GU"/>
+                    <connections>
+                        <outlet property="colorsLayoutArea" destination="84z-UA-ffa" id="VSt-Px-K2E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4x-8q-9Pq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="136"/>
+            <point key="canvasLocation" x="1573.8461538461538" y="135.781990521327"/>
         </scene>
     </scenes>
 </document>

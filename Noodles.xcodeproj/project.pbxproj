@@ -20,6 +20,7 @@
 		4A516AAB3021793A0041CED0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AAA3021793A0041CED0 /* SettingsViewController.swift */; };
 		4A516AC93023ABB80041CED0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516AC83023ABB80041CED0 /* Theme.swift */; };
 		4A516ACB3023BFEF0041CED0 /* ColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516ACA3023BFEF0041CED0 /* ColorsViewController.swift */; };
+		4A516ACD30254A890041CED0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A516ACC30254A890041CED0 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4A516AAA3021793A0041CED0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A516AC83023ABB80041CED0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4A516ACA3023BFEF0041CED0 /* ColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsViewController.swift; sourceTree = "<group>"; };
+		4A516ACC30254A890041CED0 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				4A516AA83020F9FA0041CED0 /* Spot.swift */,
 				4A516AA430203C800041CED0 /* ColorSource.swift */,
 				4A516A9E302010BA0041CED0 /* CanvasView.swift */,
+				4A516ACC30254A890041CED0 /* Grid.swift */,
 				4A516AA0302011200041CED0 /* Extensions.swift */,
 				4A516A91302010220041CED0 /* Supporting Files */,
 				4A516A92302010220041CED0 /* Info.plist */,
@@ -174,6 +177,7 @@
 				4A516AC93023ABB80041CED0 /* Theme.swift in Sources */,
 				4A516AA1302011200041CED0 /* Extensions.swift in Sources */,
 				4A516A9B302010220041CED0 /* AppDelegate.swift in Sources */,
+				4A516ACD30254A890041CED0 /* Grid.swift in Sources */,
 				4A516AA530203C800041CED0 /* ColorSource.swift in Sources */,
 				4A516A9C302010220041CED0 /* SceneDelegate.swift in Sources */,
 				4A516A9D302010220041CED0 /* ViewController.swift in Sources */,

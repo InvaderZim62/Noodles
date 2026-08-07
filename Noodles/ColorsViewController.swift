@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct ColorConst {
+    static let themeSectionAspectRatio = 4.0  // width / height
+    static let colorPatchAspectRatio = 1.0
+    static let spaceBetweenThemes = 20.0
+}
+
 class ColorsViewController: UIViewController {
 
     var theme = Theme.grayAndRed
@@ -16,37 +22,64 @@ class ColorsViewController: UIViewController {
     private var colorViews = [UIView]()
     private var pastBounds = CGRect.zero
     
-    func namePositionFor(index: Int) -> CGPoint {
-        CGPoint(x: 20, y: 80 + 80 * index)
-    }
+    @IBOutlet weak var colorsLayoutArea: UIView!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if view.bounds != pastBounds {
-            clearScreen()  // except for title and Done button
-            super.viewDidLayoutSubviews()
-            for index in Theme.allCases.indices {
-                addThemeNameForIndex(index)
-                addThemeColorsForIndex(index)
-            }
+            clearScreen()
+            layoutThemesAndColors()
             pastBounds = view.bounds
         }
     }
     
+    // clear all name buttons and color views (leave title label and Done button)
     private func clearScreen() {
         nameButtons.forEach { $0.removeFromSuperview() }
         nameButtons.removeAll()
         colorViews.forEach { $0.removeFromSuperview() }
         colorViews.removeAll()
     }
-    
-    private func addThemeNameForIndex(_ index: Int) {
+
+    // create nested grids with themes in the outer grid and colors in the inner grid
+    private func layoutThemesAndColors() {
+        // layout themes
+        var themeGrid = Grid(layout: .aspectRatio(ColorConst.themeSectionAspectRatio), frame: colorsLayoutArea.frame)
+        themeGrid.cellCount = Theme.allCases.count
+        for row in 0..<themeGrid.dimensions.rowCount {
+            for col in 0..<themeGrid.dimensions.columnCount {
+                let themeIndex = row * themeGrid.dimensions.columnCount + col
+                if themeIndex >= Theme.allCases.count { break }
+                let theme = Theme.allCases[themeIndex]
+                if let themeFrame = themeGrid[row, col] {
+                    addNameForThemeIndex(themeIndex, origin: themeFrame.origin)
+                    // layout colors
+                    let inset = ColorConst.spaceBetweenThemes
+                    let colorFrame = themeFrame.inset(by: UIEdgeInsets(top: 40, left: inset, bottom: inset, right: inset))  // leave room above for theme name
+                    var colorGrid = Grid(layout: .aspectRatio(ColorConst.colorPatchAspectRatio), frame: colorFrame)
+                    colorGrid.cellCount = Constant.numberOfColorSources
+                    for row in 0..<colorGrid.dimensions.rowCount {
+                        for col in 0..<colorGrid.dimensions.columnCount {
+                            let colorIndex = row * colorGrid.dimensions.columnCount + col
+                            if colorIndex >= Constant.numberOfColorSources { break }
+                            if let colorFrame = colorGrid[row, col] {
+                                let color = theme.color(colorIndex, of: Constant.numberOfColorSources)
+                                addPatchForColor(color, frame: colorFrame)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func addNameForThemeIndex(_ index: Int, origin: CGPoint) {
         let theme = Theme.allCases[index]
         let nameButton = UIButton()
         nameButton.setTitle(theme.name, for: .normal)
         nameButton.titleLabel?.font = UIFont(name: "Chalkboard SE Regular", size: 20)
         nameButton.sizeToFit()
-        nameButton.frame.origin = namePositionFor(index: index)
+        nameButton.frame.origin = origin
         nameButton.setTitleColor(.systemBlue, for: .normal)
         nameButton.tag = index
         nameButton.addTarget(self, action: #selector(selectTheme), for: .touchUpInside)
@@ -54,17 +87,11 @@ class ColorsViewController: UIViewController {
         view.addSubview(nameButton)
     }
     
-    private func addThemeColorsForIndex(_ index: Int) {
-        let theme = Theme.allCases[index]
-        let namePosition = namePositionFor(index: index)
-        let size = min((view.bounds.width - 40) / CGFloat(Constant.numberOfColorSources), 40)
-        for i in 0..<Constant.numberOfColorSources {
-            let colorView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: size, height: size)))
-            colorView.frame.origin = namePosition + CGPoint(x: size * CGFloat(i), y: 40)
-            colorView.backgroundColor = theme.color(i, of: Constant.numberOfColorSources)
-            colorViews.append(colorView)
-            view.addSubview(colorView)
-        }
+    private func addPatchForColor(_ color: UIColor, frame: CGRect) {
+        let colorView = UIView(frame: frame)
+        colorView.backgroundColor = color
+        colorViews.append(colorView)
+        view.addSubview(colorView)
     }
     
     @objc private func selectTheme(_ sender: UIButton) {
