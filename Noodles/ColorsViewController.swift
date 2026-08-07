@@ -76,7 +76,7 @@ class ColorsViewController: UIViewController {
     private func addNameForThemeIndex(_ index: Int, origin: CGPoint) {
         let theme = Theme.allCases[index]
         let nameButton = UIButton()
-        nameButton.setTitle(theme.name, for: .normal)
+        nameButton.setTitle(theme.rawValue, for: .normal)
         nameButton.titleLabel?.font = UIFont(name: "Chalkboard SE Regular", size: 20)
         nameButton.sizeToFit()
         nameButton.frame.origin = origin
