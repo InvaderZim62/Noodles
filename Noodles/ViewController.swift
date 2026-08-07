@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     }
     var theme: Theme! {
         didSet {
+            if theme != oldValue { canvasView.clearAll() }
             setColorsBasedOnTheme()
         }
     }

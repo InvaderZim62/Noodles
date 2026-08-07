@@ -11,8 +11,8 @@ enum Theme: String, CaseIterable {
     case grayscale = "Grayscale"
     case grayAndRed = "Gray & Red"
     case rainbow = "Rainbow"
-    case pollock1 = "Pollock 1"
-    case pollock2 = "Pollock 2"
+    case pollock1 = "Pollock Unravelling"
+    case pollock2 = "Pollock Blue"
 
     func color(_ index: Int, of numberOfColors: Int) -> UIColor {
         guard index < numberOfColors else { return .clear }

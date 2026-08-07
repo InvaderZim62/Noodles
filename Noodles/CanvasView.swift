@@ -13,7 +13,7 @@
 import UIKit
 
 struct CanvasConst {
-    static let maxSpots = 1000  // max points before capturing image of canvas and clearing points
+    static let maxSpots = 500  // max points before capturing image of canvas and clearing points
 }
 
 class CanvasView: UIView {
@@ -26,15 +26,18 @@ class CanvasView: UIView {
     override var bounds: CGRect {
         didSet {
             if bounds != oldValue {
-                // orientation changed - clear screen
-                spots.removeAll()
-                canvasImageView.image = nil
+                clearAll()
             }
         }
     }
     
     func addSpot(_ spot: Spot) {
         spots.append(spot)
+    }
+    
+    func clearAll() {
+        spots.removeAll()
+        canvasImageView.image = nil
     }
     
     override func draw(_ rect: CGRect) {
