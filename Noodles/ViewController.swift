@@ -67,6 +67,7 @@ class ViewController: UIViewController {
     }
     
     private func setColorsBasedOnTheme() {
+        view.backgroundColor = theme.background
         for index in colorSources.indices {
             colorSources[index].color = theme.color(index, of: Constant.numberOfColorSources)
         }
