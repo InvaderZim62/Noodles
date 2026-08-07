@@ -15,8 +15,10 @@ enum Theme: String, CaseIterable {
     case pollock2 = "Pollock Blue Poles"
     case pollock3 = "Pollock Untitled"
     
-    var background: UIColor {
+    var backgroundColor: UIColor {
         switch self {
+        case .rainbow:
+            return .white
         case .pollock3:
             return #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0.6183914812, alpha: 1)
         default:
